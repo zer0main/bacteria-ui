@@ -12,3 +12,12 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_fileButton_clicked() {
+    QString fileName = QFileDialog::getOpenFileName(
+        this,
+        tr("Open File"),
+        "/home",
+        tr("All files (*.*)")
+    );
+}
