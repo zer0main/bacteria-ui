@@ -9,7 +9,7 @@ include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src/gui"
 
 file(GLOB sources "src/gui/*.cpp")
 file(GLOB uis "src/gui/*.ui")
-file(GLOB qheaders "src/gui/*.h")
+file(GLOB qheaders "src/gui/*.hpp")
 
 QT4_WRAP_UI(UISrcs ${uis})
 QT4_WRAP_CPP(MOCrcs ${qheaders})

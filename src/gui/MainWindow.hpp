@@ -1,5 +1,5 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef MAINWINDOW_HPP_
+#define MAINWINDOW_HPP_
 
 #include <QtGui>
 
@@ -22,4 +22,4 @@ private slots:
     void on_fileButton_clicked();
 };
 
-#endif // MAINWINDOW_H
+#endif // MAINWINDOW_HPP_
