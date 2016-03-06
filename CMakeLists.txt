@@ -4,10 +4,15 @@ project(bacteria-ui)
 FIND_PACKAGE(Qt4 REQUIRED)
 INCLUDE(${QT_USE_FILE})
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src/gui"
+    ${CMAKE_CURRENT_BINARY_DIR})
 
-QT4_WRAP_UI(UISrcs mainwindow.ui)
-QT4_WRAP_CPP(MOCrcs mainwindow.h)
+file(GLOB sources "src/gui/*.cpp")
+file(GLOB uis "src/gui/*.ui")
+file(GLOB qheaders "src/gui/*.h")
 
-add_executable(bacteria-ui mainwindow.cpp main.cpp ${MOCrcs} ${UISrcs})
+QT4_WRAP_UI(UISrcs ${uis})
+QT4_WRAP_CPP(MOCrcs ${qheaders})
+
+add_executable(bacteria-ui ${sources} ${MOCrcs} ${UISrcs})
 TARGET_LINK_LIBRARIES(bacteria-ui ${QT_LIBRARIES})
