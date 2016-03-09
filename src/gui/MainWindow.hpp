@@ -17,11 +17,11 @@ class MainWindow;
 class MainWindow : public QMainWindow {
     Q_OBJECT
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget* parent = 0);
     ~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow* ui;
 
 private slots:
     void on_fileButton_clicked();
