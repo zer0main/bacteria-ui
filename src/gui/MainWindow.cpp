@@ -19,10 +19,10 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::on_fileButton_clicked() {
-    QString fileName = QFileDialog::getOpenFileName(
+    QStringList file_names = QFileDialog::getOpenFileNames(
         this,
         tr("Open File"),
         "/home",
-        tr("All files (*.*)")
+        ""
     );
 }
