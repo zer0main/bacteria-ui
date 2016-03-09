@@ -18,6 +18,13 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+void MainWindow::updateTeamsList(QStringList file_names) {
+    for (int i = 0; i < file_names.size(); i++) {
+        QLabel* list = ui->teamsList;
+        list->setText(list->text() + file_names[i]);
+    }
+}
+
 void MainWindow::on_fileButton_clicked() {
     QStringList file_names = QFileDialog::getOpenFileNames(
         this,
@@ -25,4 +32,5 @@ void MainWindow::on_fileButton_clicked() {
         "/home",
         ""
     );
+    updateTeamsList(file_names);
 }

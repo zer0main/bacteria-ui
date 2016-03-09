@@ -23,6 +23,8 @@ public:
 private:
     Ui::MainWindow* ui;
 
+    void updateTeamsList(QStringList file_names);
+
 private slots:
     void on_fileButton_clicked();
 };
