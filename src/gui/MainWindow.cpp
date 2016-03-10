@@ -19,8 +19,9 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::updateTeamsList(QStringList file_names) {
+    QLabel* list = ui->teamsList;
+    list->setText("<b>Teams:</b>");
     for (int i = 0; i < file_names.size(); i++) {
-        QLabel* list = ui->teamsList;
         list->setText(list->text() + file_names[i]);
     }
 }
