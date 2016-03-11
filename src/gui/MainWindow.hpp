@@ -29,6 +29,8 @@ private:
 
     void setTeamsListModel();
 
+    void initializeTeamsListModel(const QStringList& file_names);
+
 private slots:
     void on_fileButton_clicked();
 

@@ -22,7 +22,14 @@ void MainWindow::setTeamsListModel() {
     ui->teamsList->setModel(teams_list_model_);
 }
 
+void MainWindow::initializeTeamsListModel(const QStringList& files) {
+    Ints hashes;
+    for (int i = 0; i < files.size(); i++) {
+        uint hash = qHash(files[i]);
+        hashes.push_back(static_cast<int>(hash));
     }
+    teams_list_model_ = new TableModel(this, hashes);
+    setTeamsListModel();
 }
 
 void MainWindow::on_fileButton_clicked() {
@@ -33,6 +40,7 @@ void MainWindow::on_fileButton_clicked() {
         ""
     );
     if (file_names.size() != 0) {
+        initializeTeamsListModel(file_names);
         ui->stackedWidget->setCurrentWidget(ui->inputpage);
     }
 }
