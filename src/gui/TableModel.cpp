@@ -12,16 +12,16 @@ TableModel::TableModel(QObject* parent, Ints hashes) :
 }
 
 int TableModel::rowCount(const Index& /*parent*/) const {
-    return 1;
+    return hashes_.size();
 }
 
 int TableModel::columnCount(const Index& /*parent*/) const {
-    return hashes_.size();
+    return 1;
 }
 
 QVariant TableModel::data(const Index& index, int role) const {
     if (role == Qt::DecorationRole) {
-        return QColor(QRgb(hashes_[index.column()]));
+        return QColor(QRgb(hashes_[index.row()]));
     }
     return QVariant();
 }
