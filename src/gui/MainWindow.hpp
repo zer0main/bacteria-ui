@@ -27,6 +27,8 @@ private:
 
     TableModel* teams_list_model_;
 
+    void setTeamsListModel();
+
 private slots:
     void on_fileButton_clicked();
 

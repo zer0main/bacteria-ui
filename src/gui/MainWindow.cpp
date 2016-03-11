@@ -18,6 +18,10 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+void MainWindow::setTeamsListModel() {
+    ui->teamsList->setModel(teams_list_model_);
+}
+
     }
 }
 
