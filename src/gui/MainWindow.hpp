@@ -27,6 +27,8 @@ private:
 
 private slots:
     void on_fileButton_clicked();
+
+    void on_quitButton_clicked();
 };
 
 #endif // MAINWINDOW_HPP_

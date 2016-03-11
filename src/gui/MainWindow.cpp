@@ -35,3 +35,7 @@ void MainWindow::on_fileButton_clicked() {
     );
     updateTeamsList(file_names);
 }
+
+void MainWindow::on_quitButton_clicked() {
+    QApplication::quit();
+}
