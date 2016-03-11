@@ -18,11 +18,6 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::updateTeamsList(QStringList file_names) {
-    QLabel* list = ui->teamsList;
-    list->setText("<b>Teams:</b>");
-    for (int i = 0; i < file_names.size(); i++) {
-        list->setText(list->text() + file_names[i]);
     }
 }
 
@@ -33,7 +28,6 @@ void MainWindow::on_fileButton_clicked() {
         "/home",
         ""
     );
-    updateTeamsList(file_names);
     if (file_names.size() != 0) {
         ui->stackedWidget->setCurrentWidget(ui->inputpage);
     }

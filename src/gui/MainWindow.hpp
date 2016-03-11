@@ -25,7 +25,6 @@ public:
 private:
     Ui::MainWindow* ui;
 
-    void updateTeamsList(QStringList file_names);
     TableModel* teams_list_model_;
 
 private slots:
