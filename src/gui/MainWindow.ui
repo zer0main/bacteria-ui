@@ -193,7 +193,20 @@ color: rgb(255, 255, 255);</string>
          <widget class="QTableView" name="tableView"/>
         </item>
         <item row="0" column="1">
-         <widget class="QTableView" name="teamsList"/>
+         <widget class="QTableView" name="teamsList">
+          <attribute name="horizontalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderHighlightSections">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderHighlightSections">
+           <bool>false</bool>
+          </attribute>
+         </widget>
         </item>
        </layout>
       </widget>
