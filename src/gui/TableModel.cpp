@@ -7,10 +7,8 @@
 
 #include "TableModel.hpp"
 
-typedef QModelIndex Index;
-
-TableModel::TableModel(QObject* parent) :
-    QAbstractTableModel(parent) {
+TableModel::TableModel(QObject* parent, Ints hashes) :
+    QAbstractTableModel(parent), hashes_(hashes) {
 }
 
 int TableModel::rowCount(const Index& /*parent*/) const {
@@ -18,12 +16,12 @@ int TableModel::rowCount(const Index& /*parent*/) const {
 }
 
 int TableModel::columnCount(const Index& /*parent*/) const {
-    return 1;
+    return hashes_.size();
 }
 
-QVariant TableModel::data(const Index& index,
-                          int role) const {
+QVariant TableModel::data(const Index& index, int role) const {
     if (role == Qt::DecorationRole) {
+        return QColor(QRgb(hashes_[index.column()]));
     }
     return QVariant();
 }
