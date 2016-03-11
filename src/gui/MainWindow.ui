@@ -39,17 +39,8 @@
           </item>
           <item>
            <widget class="QPushButton" name="fileButton">
-            <property name="minimumSize">
-             <size>
-              <width>83</width>
-              <height>27</height>
-             </size>
-            </property>
-            <property name="baseSize">
-             <size>
-              <width>100</width>
-              <height>100</height>
-             </size>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(170, 0, 0);
@@ -92,6 +83,9 @@ color: rgb(255, 255, 255);</string>
           </item>
           <item>
            <widget class="QPushButton" name="nextButton">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string>Next</string>
             </property>
@@ -129,6 +123,9 @@ color: rgb(255, 255, 255);</string>
           </item>
           <item>
            <widget class="QPushButton" name="quitButton">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string>Quit</string>
             </property>
@@ -215,6 +212,9 @@ color: rgb(255, 255, 255);</string>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
              <widget class="QPushButton" name="playButton">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
               <property name="text">
                <string>PLAY</string>
               </property>
