@@ -10,6 +10,8 @@
 
 #include <QtGui>
 
+#include "TableModel.hpp"
+
 namespace Ui {
 class MainWindow;
 }
@@ -24,6 +26,7 @@ private:
     Ui::MainWindow* ui;
 
     void updateTeamsList(QStringList file_names);
+    TableModel* teams_list_model_;
 
 private slots:
     void on_fileButton_clicked();
