@@ -31,6 +31,8 @@ private:
 
     void initializeTeamsListModel(const QStringList& file_names);
 
+    void configureTableView(QTableView* view);
+
 private slots:
     void on_fileButton_clicked();
 

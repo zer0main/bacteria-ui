@@ -30,6 +30,13 @@ void MainWindow::initializeTeamsListModel(const QStringList& files) {
     }
     teams_list_model_ = new TableModel(this, hashes);
     setTeamsListModel();
+    configureTableView(ui->teamsList);
+}
+
+void MainWindow::configureTableView(QTableView* view) {
+    view->setSelectionMode(QAbstractItemView::NoSelection);
+    view->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+    view->verticalHeader()->setResizeMode(QHeaderView::Stretch);
 }
 
 void MainWindow::on_fileButton_clicked() {
