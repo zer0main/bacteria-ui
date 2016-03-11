@@ -7,12 +7,12 @@
 
 #include "TableModel.hpp"
 
-TableModel::TableModel(QObject* parent, Ints hashes) :
-    QAbstractTableModel(parent), hashes_(hashes) {
+TableModel::TableModel(QObject* parent, const QStringList& teams) :
+    QAbstractTableModel(parent), teams_(teams) {
 }
 
 int TableModel::rowCount(const Index& /*parent*/) const {
-    return hashes_.size();
+    return teams_.size();
 }
 
 int TableModel::columnCount(const Index& /*parent*/) const {
@@ -21,7 +21,10 @@ int TableModel::columnCount(const Index& /*parent*/) const {
 
 QVariant TableModel::data(const Index& index, int role) const {
     if (role == Qt::DecorationRole) {
-        return QColor(QRgb(hashes_[index.row()]));
+        uint hash = qHash(teams_[index.row()]);
+        return QColor(QRgb(static_cast<int>(hash)));
+    } else if (role == Qt::DisplayRole) {
+        return teams_[index.row()];
     }
     return QVariant();
 }

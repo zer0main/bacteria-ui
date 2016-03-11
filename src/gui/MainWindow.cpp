@@ -23,12 +23,11 @@ void MainWindow::setTeamsListModel() {
 }
 
 void MainWindow::initializeTeamsListModel(const QStringList& files) {
-    Ints hashes;
+    QStringList teams;
     for (int i = 0; i < files.size(); i++) {
-        uint hash = qHash(files[i]);
-        hashes.push_back(static_cast<int>(hash));
+        teams.append(QFileInfo(files[i]).baseName());
     }
-    teams_list_model_ = new TableModel(this, hashes);
+    teams_list_model_ = new TableModel(this, teams);
     setTeamsListModel();
     configureTableView(ui->teamsList);
 }

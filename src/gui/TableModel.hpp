@@ -8,18 +8,17 @@
 #ifndef TABLE_MODEL_HPP_
 #define TABLE_MODEL_HPP_
 
-#include <vector>
+#include <string>
 
 #include <QtGui>
 
 typedef QModelIndex Index;
-typedef std::vector<int> Ints;
 
 /** Model for list of teams */
 class TableModel : public QAbstractTableModel {
     Q_OBJECT
 public:
-    TableModel(QObject* parent, Ints hashes);
+    TableModel(QObject* parent, const QStringList& teams);
 
     int rowCount(const Index& parent = Index()) const;
 
@@ -31,7 +30,7 @@ public:
     void updateData();
 
 private:
-    Ints hashes_;
+    QStringList teams_;
 };
 
 #endif
