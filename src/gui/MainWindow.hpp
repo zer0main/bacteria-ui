@@ -29,6 +29,8 @@ private slots:
     void on_fileButton_clicked();
 
     void on_quitButton_clicked();
+
+    void on_playButton_clicked();
 };
 
 #endif // MAINWINDOW_HPP_

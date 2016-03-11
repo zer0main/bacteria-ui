@@ -42,3 +42,7 @@ void MainWindow::on_fileButton_clicked() {
 void MainWindow::on_quitButton_clicked() {
     QApplication::quit();
 }
+
+void MainWindow::on_playButton_clicked() {
+    ui->stackedWidget->setCurrentWidget(ui->gamepage);
+}
