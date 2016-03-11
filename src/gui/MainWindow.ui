@@ -188,16 +188,12 @@ color: rgb(255, 255, 255);</string>
        </layout>
       </widget>
       <widget class="QWidget" name="gamepage">
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
          <widget class="QTableView" name="tableView"/>
         </item>
-        <item>
-         <widget class="QLabel" name="teamsList">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
+        <item row="0" column="1">
+         <widget class="QTableView" name="teamsList"/>
         </item>
        </layout>
       </widget>
