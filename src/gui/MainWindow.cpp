@@ -34,12 +34,11 @@ void MainWindow::on_fileButton_clicked() {
         ""
     );
     updateTeamsList(file_names);
+    if (file_names.size() != 0) {
+        ui->stackedWidget->setCurrentWidget(ui->inputpage);
+    }
 }
 
 void MainWindow::on_quitButton_clicked() {
     QApplication::quit();
-}
-
-void MainWindow::on_nextButton_clicked() {
-    ui->stackedWidget->setCurrentWidget(ui->inputpage);
 }
