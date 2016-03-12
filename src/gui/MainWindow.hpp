@@ -33,6 +33,8 @@ private:
 
     void configureTableView(QTableView* view);
 
+    void updateCellSize();
+
 private slots:
     void on_fileButton_clicked();
 
