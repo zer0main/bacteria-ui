@@ -188,7 +188,7 @@ color: rgb(255, 255, 255);</string>
        </layout>
       </widget>
       <widget class="QWidget" name="gamepage">
-       <layout class="QGridLayout" name="gridLayout_3">
+       <layout class="QGridLayout" name="gridLayout_3" columnstretch="7,3">
         <item row="0" column="0">
          <widget class="QTableView" name="tableView"/>
         </item>
