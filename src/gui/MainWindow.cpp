@@ -30,6 +30,11 @@ void MainWindow::initializeTeamsListModel(const QStringList& files) {
     teams_list_model_ = new TableModel(this, teams);
     setTeamsListModel();
     configureTableView(ui->teamsList);
+    // Use the first row/column because heights/widths
+    // of all rows/columns are equal
+    int cell_width = ui->teamsList->columnWidth(0);
+    int cell_height = ui->teamsList->rowHeight(0);
+    teams_list_model_->updateCellSize(cell_width, cell_height);
 }
 
 void MainWindow::configureTableView(QTableView* view) {
