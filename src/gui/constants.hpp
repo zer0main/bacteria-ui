@@ -11,10 +11,10 @@
 namespace Gui {
 
 /** The proportion of a team color's width in a cell */
-const double COLOR_WIDTH_PROPORTION = 0.333;
+const double COLOR_WIDTH_PROPORTION = 1;
 
 /** The proportion of a team color's height in a cell */
-const double COLOR_HEIGHT_PROPORTION = 0.125;
+const double COLOR_HEIGHT_PROPORTION = 1;
 
 }
 
