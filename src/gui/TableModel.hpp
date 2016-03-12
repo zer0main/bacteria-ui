@@ -12,8 +12,6 @@
 
 #include <QtGui>
 
-#include "constants.hpp"
-
 typedef QModelIndex Index;
 
 /** Model for list of teams */
@@ -31,13 +29,8 @@ public:
 
     void updateData();
 
-    void updateCellSize(int new_width, int new_height);
-
 private:
     QStringList teams_;
-
-    int cell_width_;
-    int cell_height_;
 };
 
 #endif

@@ -18,14 +18,6 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::resizeEvent(QResizeEvent* event) {
-    QWidget* current_page = ui->stackedWidget->currentWidget();
-    if (current_page == ui->gamepage) {
-        updateCellSize();
-        QMainWindow::resizeEvent(event);
-    }
-}
-
 void MainWindow::setTeamsListModel() {
     ui->teamsList->setModel(teams_list_model_);
 }
@@ -42,16 +34,8 @@ void MainWindow::initializeTeamsListModel(const QStringList& files) {
 
 void MainWindow::configureTableView(QTableView* view) {
     view->setSelectionMode(QAbstractItemView::NoSelection);
-    view->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-    view->verticalHeader()->setResizeMode(QHeaderView::Stretch);
-}
-
-void MainWindow::updateCellSize() {
-    // Use the first row/column because heights/widths
-    // of all rows/columns are equal
-    int cell_width = ui->teamsList->columnWidth(0);
-    int cell_height = ui->teamsList->rowHeight(0);
-    teams_list_model_->updateCellSize(cell_width, cell_height);
+    view->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+    view->verticalHeader()->setResizeMode(QHeaderView::ResizeToContents);
 }
 
 void MainWindow::on_fileButton_clicked() {
@@ -73,5 +57,4 @@ void MainWindow::on_quitButton_clicked() {
 
 void MainWindow::on_playButton_clicked() {
     ui->stackedWidget->setCurrentWidget(ui->gamepage);
-    updateCellSize();
 }

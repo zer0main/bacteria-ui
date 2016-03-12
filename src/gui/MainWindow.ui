@@ -188,12 +188,18 @@ color: rgb(255, 255, 255);</string>
        </layout>
       </widget>
       <widget class="QWidget" name="gamepage">
-       <layout class="QGridLayout" name="gridLayout_3" columnstretch="7,3">
+       <layout class="QGridLayout" name="gridLayout_3" columnstretch="5,1">
         <item row="0" column="0">
          <widget class="QTableView" name="tableView"/>
         </item>
         <item row="0" column="1">
          <widget class="QTableView" name="teamsList">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <attribute name="horizontalHeaderVisible">
            <bool>false</bool>
           </attribute>

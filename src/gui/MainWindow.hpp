@@ -22,9 +22,6 @@ public:
     explicit MainWindow(QWidget* parent = 0);
     ~MainWindow();
 
-protected:
-    void resizeEvent(QResizeEvent* event);
-
 private:
     Ui::MainWindow* ui;
 
