@@ -31,6 +31,9 @@ public:
 
 private:
     QStringList teams_;
+
+    int cell_width_;
+    int cell_height_;
 };
 
 #endif
