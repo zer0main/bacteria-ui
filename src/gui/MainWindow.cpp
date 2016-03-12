@@ -18,6 +18,14 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+void MainWindow::resizeEvent(QResizeEvent* event) {
+    QWidget* current_page = ui->stackedWidget->currentWidget();
+    if (current_page == ui->gamepage) {
+        updateCellSize();
+        QMainWindow::resizeEvent(event);
+    }
+}
+
 void MainWindow::setTeamsListModel() {
     ui->teamsList->setModel(teams_list_model_);
 }
