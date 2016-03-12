@@ -12,6 +12,8 @@
 
 #include <QtGui>
 
+#include "constants.hpp"
+
 typedef QModelIndex Index;
 
 /** Model for list of teams */
@@ -28,6 +30,8 @@ public:
                       Qt::DisplayRole) const;
 
     void updateData();
+
+    void updateCellSize(int new_width, int new_height);
 
 private:
     QStringList teams_;
