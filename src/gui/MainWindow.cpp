@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget* parent) :
 }
 
 MainWindow::~MainWindow() {
+    delete model_;
     delete ui;
 }
 
@@ -27,6 +28,7 @@ void MainWindow::initializeTeamsListModel(const QStringList& files) {
     for (int i = 0; i < files.size(); i++) {
         teams.append(QFileInfo(files[i]).baseName());
     }
+    teams_ = teams.size();
     teams_list_model_ = new TableModel(this, teams);
     setTeamsListModel();
     configureTableView(ui->teamsList);
@@ -56,5 +58,8 @@ void MainWindow::on_quitButton_clicked() {
 }
 
 void MainWindow::on_playButton_clicked() {
+    int size = ui->boardSize->value();
+    int bacteria_number = ui->bacteriaNumber->value();
+    model_ = new Implementation::Model(size, bacteria_number, teams_);
     ui->stackedWidget->setCurrentWidget(ui->gamepage);
 }

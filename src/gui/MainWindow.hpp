@@ -10,6 +10,8 @@
 
 #include <QtGui>
 
+#include "Model.hpp"
+
 #include "TableModel.hpp"
 
 namespace Ui {
@@ -26,6 +28,10 @@ private:
     Ui::MainWindow* ui;
 
     TableModel* teams_list_model_;
+
+    Abstract::Model* model_;
+
+    int teams_;
 
     void setTeamsListModel();
 
