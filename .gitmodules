@@ -1,0 +1,3 @@
+[submodule "bacteria-core"]
+	path = bacteria-core
+	url = https://github.com/zer0main/bacteria-core

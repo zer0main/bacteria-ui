@@ -4,6 +4,9 @@ install:
   - sudo apt-get update
   - sudo apt-get install g++ cmake make libqt4-dev
 
+before_script:
+  - git submodule update --init
+
 script:
   - mkdir build-dir
   - cd build-dir
