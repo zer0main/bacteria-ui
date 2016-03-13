@@ -5,21 +5,21 @@
  * See the LICENSE file for terms of use.
  */
 
-#include "TableModel.hpp"
+#include "TeamsListModel.hpp"
 
-TableModel::TableModel(QObject* parent, const QStringList& teams) :
+TeamsListModel::TeamsListModel(QObject* parent, const QStringList& teams) :
     QAbstractTableModel(parent), teams_(teams) {
 }
 
-int TableModel::rowCount(const Index& /*parent*/) const {
+int TeamsListModel::rowCount(const Index& /*parent*/) const {
     return teams_.size();
 }
 
-int TableModel::columnCount(const Index& /*parent*/) const {
+int TeamsListModel::columnCount(const Index& /*parent*/) const {
     return 1;
 }
 
-QVariant TableModel::data(const Index& index, int role) const {
+QVariant TeamsListModel::data(const Index& index, int role) const {
     if (role == Qt::DecorationRole) {
         uint hash = qHash(teams_[index.row()]);
         return QColor(QRgb(static_cast<int>(hash)));
@@ -29,6 +29,6 @@ QVariant TableModel::data(const Index& index, int role) const {
     return QVariant();
 }
 
-void TableModel::updateData() {
+void TeamsListModel::updateData() {
     reset();
 }

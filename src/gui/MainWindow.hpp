@@ -12,7 +12,7 @@
 
 #include "Model.hpp"
 
-#include "TableModel.hpp"
+#include "TeamsListModel.hpp"
 
 namespace Ui {
 class MainWindow;
@@ -27,7 +27,7 @@ public:
 private:
     Ui::MainWindow* ui;
 
-    TableModel* teams_list_model_;
+    TeamsListModel* teams_list_model_;
 
     Abstract::Model* model_;
 

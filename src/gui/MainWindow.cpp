@@ -29,7 +29,7 @@ void MainWindow::initializeTeamsListModel(const QStringList& files) {
         teams.append(QFileInfo(files[i]).baseName());
     }
     teams_ = teams.size();
-    teams_list_model_ = new TableModel(this, teams);
+    teams_list_model_ = new TeamsListModel(this, teams);
     setTeamsListModel();
     configureTableView(ui->teamsList);
 }

@@ -5,8 +5,8 @@
  * See the LICENSE file for terms of use.
  */
 
-#ifndef TABLE_MODEL_HPP_
-#define TABLE_MODEL_HPP_
+#ifndef TEAMS_LIST_MODEL_HPP_
+#define TEAMS_LIST_MODEL_HPP_
 
 #include <string>
 
@@ -15,10 +15,10 @@
 typedef QModelIndex Index;
 
 /** Model for list of teams */
-class TableModel : public QAbstractTableModel {
+class TeamsListModel : public QAbstractTableModel {
     Q_OBJECT
 public:
-    TableModel(QObject* parent, const QStringList& teams);
+    TeamsListModel(QObject* parent, const QStringList& teams);
 
     int rowCount(const Index& parent = Index()) const;
 
