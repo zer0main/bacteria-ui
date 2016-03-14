@@ -190,7 +190,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QWidget" name="gamepage">
        <layout class="QGridLayout" name="gridLayout_3" columnstretch="5,1">
         <item row="0" column="0">
-         <widget class="QTableView" name="tableView"/>
+         <widget class="QTableView" name="boardView"/>
         </item>
         <item row="0" column="1">
          <widget class="QTableView" name="teamsList">
