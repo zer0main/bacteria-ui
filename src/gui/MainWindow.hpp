@@ -10,9 +10,8 @@
 
 #include <QtGui>
 
-#include "Model.hpp"
-
 #include "TeamsListModel.hpp"
+#include "TableModel.hpp"
 
 namespace Ui {
 class MainWindow;
@@ -29,14 +28,15 @@ private:
 
     TeamsListModel* teams_list_model_;
 
-    Abstract::Model* model_;
+    TableModel* board_model_;
 
     int teams_;
 
-    void setTeamsListModel();
+    void setTableViewModels();
 
     void initializeTeamsListModel(const QStringList& file_names);
 
+    void initializeBoardModel(int size, int bacteria_number);
 
     void configureTeamsList();
 
