@@ -8,8 +8,6 @@
 #ifndef TEAMS_LIST_MODEL_HPP_
 #define TEAMS_LIST_MODEL_HPP_
 
-#include <string>
-
 #include <QtGui>
 
 typedef QModelIndex Index;

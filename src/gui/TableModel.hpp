@@ -8,8 +8,6 @@
 #ifndef TABLE_MODEL_HPP_
 #define TABLE_MODEL_HPP_
 
-#include <string>
-
 #include <QtGui>
 
 #include "Model.hpp"
