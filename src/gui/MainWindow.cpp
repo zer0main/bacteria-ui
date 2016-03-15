@@ -31,13 +31,20 @@ void MainWindow::initializeTeamsListModel(const QStringList& files) {
     teams_ = teams.size();
     teams_list_model_ = new TeamsListModel(this, teams);
     setTeamsListModel();
-    configureTableView(ui->teamsList);
 }
 
-void MainWindow::configureTableView(QTableView* view) {
+void MainWindow::configureTeamsList() {
+    QTableView* view = ui->teamsList;
     view->setSelectionMode(QAbstractItemView::NoSelection);
-    view->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+    view->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
     view->verticalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+}
+
+void MainWindow::configureBoardView() {
+    QTableView* view = ui->boardView;
+    view->setSelectionMode(QAbstractItemView::NoSelection);
+    view->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+    view->verticalHeader()->setResizeMode(QHeaderView::Stretch);
 }
 
 void MainWindow::on_fileButton_clicked() {
@@ -61,5 +68,7 @@ void MainWindow::on_playButton_clicked() {
     int size = ui->boardSize->value();
     int bacteria_number = ui->bacteriaNumber->value();
     model_ = new Implementation::Model(size, bacteria_number, teams_);
+    configureTeamsList();
+    configureBoardView();
     ui->stackedWidget->setCurrentWidget(ui->gamepage);
 }
