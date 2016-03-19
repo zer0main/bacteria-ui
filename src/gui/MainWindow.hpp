@@ -30,13 +30,15 @@ private:
 
     TableModel* board_model_;
 
+    QSharedPointer<Abstract::Model> model_;
+
     int teams_;
 
     void setTableViewModels();
 
     void initializeTeamsListModel(const QStringList& file_names);
 
-    void initializeBoardModel(int size, int bacteria_number);
+    void initializeModels(int width, int height, int bacteria_number);
 
     void configureTeamsList();
 

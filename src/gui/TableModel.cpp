@@ -9,35 +9,29 @@
 
 TableModel::TableModel(
     QObject* parent,
-    int size,
-    int bacteria,
-    int teams
+    ModelPtr model
 )
     : QAbstractTableModel(parent)
-    , model_(new Implementation::Model(size, bacteria, teams))
+    , model_(model)
 {
 }
 
-TableModel::~TableModel() {
-    delete model_;
-}
-
 int TableModel::rowCount(const Index& /*parent*/) const {
-    return model_->size();
+    return model_->getWidth();
 }
 
 int TableModel::columnCount(const Index& /*parent*/) const {
-    return model_->size();
+    return model_->getHeight();
 }
 
 QVariant TableModel::data(const Index& index, int role) const {
     if (role == Qt::DisplayRole) {
-        Abstract::Model::CellState state =
-            model_->cellState(index.column(), index.row());
-        if (state == Abstract::Model::BACTERIUM) {
-            return model_->getTeam(index.column(), index.row());
+        Abstract::CellState state =
+            model_->cellState(index.row(), index.column());
+        if (state == Abstract::BACTERIUM) {
+            return model_->getTeam(index.row(), index.column());
         } else {
-            return 0;
+            return -1;
         }
     }
     return QVariant();

@@ -32,8 +32,10 @@ void MainWindow::initializeTeamsListModel(const QStringList& files) {
     teams_list_model_ = new TeamsListModel(this, teams);
 }
 
-void MainWindow::initializeBoardModel(int size, int bacteria_number) {
-    board_model_ = new TableModel(this, size, bacteria_number, teams_);
+void MainWindow::initializeModels(int width, int height, int bacteria) {
+    model_ = QSharedPointer<Abstract::Model>
+             (new Implementation::Model(width, height, bacteria, teams_));
+    board_model_ = new TableModel(this, model_);
 }
 
 void MainWindow::configureTeamsList() {
@@ -68,9 +70,10 @@ void MainWindow::on_quitButton_clicked() {
 }
 
 void MainWindow::on_playButton_clicked() {
-    int size = ui->boardSize->value();
-    int bacteria_number = ui->bacteriaNumber->value();
-    initializeBoardModel(size, bacteria_number);
+    int width = ui->boardWidth->value();
+    int height = ui->boardHeight->value();
+    int bacteria = ui->bacteriaNumber->value();
+    initializeModels(width, height, bacteria);
     setTableViewModels();
     configureTeamsList();
     configureBoardView();

@@ -13,14 +13,13 @@
 #include "Model.hpp"
 
 typedef QModelIndex Index;
+typedef QSharedPointer<const Abstract::Model> ModelPtr;
 
 /** Model for boardView */
 class TableModel : public QAbstractTableModel {
     Q_OBJECT
 public:
-    TableModel(QObject* parent, int size, int bacteria, int teams);
-
-    ~TableModel();
+    TableModel(QObject* parent, ModelPtr model);
 
     int rowCount(const Index& parent = Index()) const;
 
@@ -32,7 +31,7 @@ public:
     void updateData();
 
 private:
-    const Abstract::Model* model_;
+    ModelPtr model_;
 };
 
 #endif
