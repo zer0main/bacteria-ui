@@ -4,6 +4,7 @@ project(bacteria-ui)
 FIND_PACKAGE(Qt4 REQUIRED)
 INCLUDE(${QT_USE_FILE})
 
+include_directories(bacteria-core/src)
 include_directories(bacteria-core/src/util)
 include_directories(bacteria-core/src/model)
 include_directories(bacteria-core/src/interpreter)
