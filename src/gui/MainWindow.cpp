@@ -59,7 +59,10 @@ void MainWindow::on_fileButton_clicked() {
         "/home",
         ""
     );
-    if (file_names.size() != 0) {
+    int max_teams = (MAX_WIDTH * MAX_HEIGHT) / 2;
+    int min_teams = 0;
+    int teams = file_names.size();
+    if ((teams > min_teams) && (teams < max_teams)) {
         initializeTeamsListModel(file_names);
         ui->stackedWidget->setCurrentWidget(ui->inputpage);
     }
