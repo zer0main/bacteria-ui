@@ -74,6 +74,21 @@ void MainWindow::configureSizeSpinBoxes() {
     ui->boardHeight->setValue(default_height);
 }
 
+void MainWindow::errorHandling(std::exception& e) {
+    QString what = QString::fromStdString(e.what());
+    QString error = "<b>The error occurred</b>."
+                    "<br/><br/>Contact developers! "
+                    "<b>pdolgov99@gmail.com</b>";
+    what = what.replace("&", "&amp;");
+    what = what.replace("'", "&apos;");
+    what = what.replace("<", "&lt;");
+    what = what.replace(">", "&gt;");
+    what = what.replace("\"", "&quot;");
+    QString m = error + "<br/><br/>" + what;
+    QErrorMessage::qtHandler()->resize(400, 300);
+    QErrorMessage::qtHandler()->showMessage(m);
+}
+
 void MainWindow::on_fileButton_clicked() {
     QStringList file_names = QFileDialog::getOpenFileNames(
         this,

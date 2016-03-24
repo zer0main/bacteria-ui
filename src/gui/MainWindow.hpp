@@ -48,6 +48,8 @@ private:
 
     void configureSizeSpinBoxes();
 
+    void errorHandling(std::exception& e);
+
 private slots:
     void on_fileButton_clicked();
 
