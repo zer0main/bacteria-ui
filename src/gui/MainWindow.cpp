@@ -115,11 +115,15 @@ void MainWindow::on_nextButton_clicked() {
 }
 
 void MainWindow::on_playButton_clicked() {
-    int width = ui->boardWidth->value();
-    int height = ui->boardHeight->value();
-    initializeModels(width, height);
-    setTableViewModels();
-    configureTeamsList();
-    configureBoardView();
-    ui->stackedWidget->setCurrentWidget(ui->gamepage);
+    try {
+        int width = ui->boardWidth->value();
+        int height = ui->boardHeight->value();
+        initializeModels(width, height);
+        setTableViewModels();
+        configureTeamsList();
+        configureBoardView();
+        ui->stackedWidget->setCurrentWidget(ui->gamepage);
+    } catch (std::exception& e) {
+        errorHandling(e);
+    }
 }
