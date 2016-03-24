@@ -5,7 +5,10 @@
  * See the LICENSE file for terms of use.
  */
 
+#include <cstdlib>
+#include <ctime>
 #include <exception>
+
 #include <QtGui>
 
 #include "MainWindow.hpp"
@@ -38,6 +41,7 @@ public:
 };
 
 int main(int argc, char* argv[]) {
+    srand(time(NULL));
     MyApplication a(argc, argv);
     MainWindow w;
     w.showMaximized();
