@@ -17,6 +17,7 @@ file(GLOB qheaders "src/gui/*.hpp")
 
 QT4_WRAP_UI(UISrcs ${uis})
 QT4_WRAP_CPP(MOCrcs ${qheaders})
+QT4_ADD_RESOURCES(RCSrcs "src/gui/qbacteria.qrc")
 
-add_executable(bacteria-ui ${sources} ${MOCrcs} ${UISrcs})
+add_executable(bacteria-ui ${sources} ${MOCrcs} ${UISrcs} ${RCSrcs})
 TARGET_LINK_LIBRARIES(bacteria-ui ${QT_LIBRARIES})
