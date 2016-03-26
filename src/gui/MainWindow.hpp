@@ -32,7 +32,9 @@ private:
 
     QSharedPointer<Abstract::Model> model_;
 
-    int teams_, bacteria_;
+    QStringList teams_;
+
+    int bacteria_;
 
     void setTableViewModels();
 

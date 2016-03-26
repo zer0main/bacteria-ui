@@ -26,20 +26,19 @@ void MainWindow::setTableViewModels() {
 }
 
 void MainWindow::initializeTeamsListModel(const QStringList& files) {
-    QStringList teams;
     for (int i = 0; i < files.size(); i++) {
-        teams.append(QFileInfo(files[i]).baseName());
+        teams_.append(QFileInfo(files[i]).baseName());
     }
-    teams_ = teams.size();
-    teams_list_model_ = new TeamsListModel(this, teams);
+    teams_list_model_ = new TeamsListModel(this, teams_);
 }
 
 void MainWindow::initializeModels(int width, int height) {
+    int teams = teams_.size();
     model_ = QSharedPointer<Abstract::Model>
              (Abstract::makeModel<Implementation::Model>(width,
                                                          height,
                                                          bacteria_,
-                                                         teams_));
+                                                         teams));
     board_model_ = new TableModel(this, model_);
 }
 
@@ -63,7 +62,8 @@ void MainWindow::configureBacteriaSpinBox() {
 }
 
 void MainWindow::configureSizeSpinBoxes() {
-    int min_size = static_cast<int>(qSqrt(teams_ * bacteria_ * 2) + 1);
+    int teams = teams_.size();
+    int min_size = static_cast<int>(qSqrt(teams * bacteria_ * 2) + 1);
     int min_width = std::max(MIN_WIDTH, min_size);
     int min_height = std::max(MIN_HEIGHT, min_size);
     ui->boardWidth->setRange(min_width, MAX_WIDTH);
