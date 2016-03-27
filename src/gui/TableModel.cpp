@@ -9,10 +9,12 @@
 
 TableModel::TableModel(
     QObject* parent,
-    ModelPtr model
+    ModelPtr model,
+    QStringList teams
 )
     : QAbstractTableModel(parent)
     , model_(model)
+    , teams_(teams)
 {
 }
 

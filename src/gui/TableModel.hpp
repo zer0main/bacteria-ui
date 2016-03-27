@@ -19,7 +19,7 @@ typedef QSharedPointer<const Abstract::Model> ModelPtr;
 class TableModel : public QAbstractTableModel {
     Q_OBJECT
 public:
-    TableModel(QObject* parent, ModelPtr model);
+    TableModel(QObject* parent, ModelPtr model, QStringList teams);
 
     int rowCount(const Index& parent = Index()) const;
 
@@ -32,6 +32,8 @@ public:
 
 private:
     ModelPtr model_;
+
+    QStringList teams_;
 };
 
 #endif

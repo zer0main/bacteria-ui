@@ -39,7 +39,7 @@ void MainWindow::initializeModels(int width, int height) {
                                                          height,
                                                          bacteria_,
                                                          teams));
-    board_model_ = new TableModel(this, model_);
+    board_model_ = new TableModel(this, model_, teams_);
 }
 
 void MainWindow::configureTeamsList() {
