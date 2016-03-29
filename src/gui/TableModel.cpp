@@ -27,14 +27,20 @@ int TableModel::columnCount(const Index& /*parent*/) const {
 }
 
 QVariant TableModel::data(const Index& index, int role) const {
-    if (role == Qt::DisplayRole) {
+    if (role == Qt::DecorationRole) {
         Abstract::CellState state =
             model_->cellState(index.row(), index.column());
+        QImage image(QSize(100, 100), QImage::Format_ARGB32);
         if (state == Abstract::BACTERIUM) {
-            return model_->getTeam(index.row(), index.column());
+            int team = model_->getTeam(index.row(), index.column());
+            uint hash = qHash(teams_[team]);
+            QPainter painter(&image);
+            painter.setBrush(QColor(QRgb(static_cast<int>(hash))));
+            painter.drawEllipse(0, 0, 80, 80);
         } else {
-            return -1;
+            image.fill(Qt::white);
         }
+        return image;
     }
     return QVariant();
 }
