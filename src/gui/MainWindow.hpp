@@ -10,6 +10,7 @@
 
 #include <QtGui>
 
+#include "globals.hpp"
 #include "TeamsListModel.hpp"
 #include "TableModel.hpp"
 
@@ -30,7 +31,7 @@ private:
 
     TableModel* board_model_;
 
-    QSharedPointer<Abstract::Model> model_;
+    ModelPtr model_;
 
     QStringList teams_;
 

@@ -34,7 +34,7 @@ void MainWindow::initializeTeamsListModel(const QStringList& files) {
 
 void MainWindow::initializeModels(int width, int height) {
     int teams = teams_.size();
-    model_ = QSharedPointer<Abstract::Model>
+    model_ = ModelPtr
              (Abstract::makeModel<Implementation::Model>(width,
                                                          height,
                                                          bacteria_,

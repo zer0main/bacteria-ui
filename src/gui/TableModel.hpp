@@ -10,16 +10,16 @@
 
 #include <QtGui>
 
+#include "globals.hpp"
 #include "Model.hpp"
 
 typedef QModelIndex Index;
-typedef QSharedPointer<const Abstract::Model> ModelPtr;
 
 /** Model for boardView */
 class TableModel : public QAbstractTableModel {
     Q_OBJECT
 public:
-    TableModel(QObject* parent, ModelPtr model, QStringList teams);
+    TableModel(QObject* parent, ConstModelPtr model, QStringList teams);
 
     int rowCount(const Index& parent = Index()) const;
 
@@ -31,7 +31,7 @@ public:
     void updateData();
 
 private:
-    ModelPtr model_;
+    ConstModelPtr model_;
 
     QStringList teams_;
 };
