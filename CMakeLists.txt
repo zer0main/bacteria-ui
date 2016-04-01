@@ -9,6 +9,7 @@ include_directories(bacteria-core/src/util)
 include_directories(bacteria-core/src/model)
 include_directories(bacteria-core/src/interpreter)
 include_directories(src/gui)
+include_directories(src)
 include_directories("${CMAKE_CURRENT_BINARY_DIR}")
 
 file(GLOB sources "src/gui/*.cpp" "bacteria-core/src/*/*.cpp")
