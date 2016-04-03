@@ -9,7 +9,7 @@
 
 TableModel::TableModel(
     QObject* parent,
-    ModelPtr model,
+    ConstModelPtr model,
     QStringList teams
 )
     : QAbstractTableModel(parent)
