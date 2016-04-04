@@ -36,7 +36,7 @@ QVariant TableModel::data(const Index& index, int role) const {
             uint hash = qHash(teams_[team]);
             QPainter painter(&image);
             painter.setBrush(QColor(QRgb(static_cast<int>(hash))));
-            painter.drawEllipse(0, 0, 80, 80);
+            painter.drawEllipse(0, 0, 100, 100);
         } else {
             image.fill(Qt::white);
         }
