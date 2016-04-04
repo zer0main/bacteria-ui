@@ -11,6 +11,7 @@
 #include <QtGui>
 
 #include "globals.hpp"
+#include "BoardItemDelegate.hpp"
 #include "TeamsListModel.hpp"
 #include "TableModel.hpp"
 
@@ -31,11 +32,15 @@ private:
 
     TableModel* board_model_;
 
+    BoardItemDelegate* board_item_delegate_;
+
     ModelPtr model_;
 
     QStringList teams_;
 
     int bacteria_;
+
+    void createBoardItemDelegate();
 
     void setTableViewModels();
 
