@@ -42,6 +42,8 @@ private:
 
     void createBoardItemDelegate();
 
+    void setBoardViewDelegate();
+
     void setTableViewModels();
 
     void initializeTeamsListModel(const QStringList& file_names);

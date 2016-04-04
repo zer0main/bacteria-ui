@@ -24,6 +24,10 @@ void MainWindow::createBoardItemDelegate() {
     board_item_delegate_ = new BoardItemDelegate(ui->boardView);
 }
 
+void MainWindow::setBoardViewDelegate() {
+    ui->boardView->setItemDelegate(board_item_delegate_);
+}
+
 void MainWindow::setTableViewModels() {
     ui->teamsList->setModel(teams_list_model_);
     ui->boardView->setModel(board_model_);
@@ -111,5 +115,6 @@ void MainWindow::on_playButton_clicked() {
     configureTeamsList();
     configureBoardView();
     createBoardItemDelegate();
+    setBoardViewDelegate();
     ui->stackedWidget->setCurrentWidget(ui->gamepage);
 }
