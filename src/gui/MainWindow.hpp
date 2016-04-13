@@ -10,7 +10,9 @@
 
 #include <QtGui>
 
-#include "globals.hpp"
+#include "CoreGlobals.hpp"
+
+#include "GuiGlobals.hpp"
 #include "BoardItemDelegate.hpp"
 #include "TeamsListModel.hpp"
 #include "TableModel.hpp"

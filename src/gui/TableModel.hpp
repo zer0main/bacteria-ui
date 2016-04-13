@@ -10,7 +10,9 @@
 
 #include <QtGui>
 
-#include "globals.hpp"
+#include "GuiGlobals.hpp"
+
+#include "CoreGlobals.hpp"
 #include "Model.hpp"
 
 typedef QModelIndex Index;
