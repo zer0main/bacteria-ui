@@ -28,11 +28,15 @@ int TableModel::columnCount(const Index& /*parent*/) const {
 
 QVariant TableModel::data(const Index& index, int role) const {
     if (role == Qt::DecorationRole) {
-        Abstract::CellState state =
-            model_->cellState(index.row(), index.column());
+        Abstract::CellState state = model_->cellState(Abstract::Point(
+            index.row(),
+            index.column()
+        ));
         QImage image(QSize(100, 100), QImage::Format_ARGB32);
         if (state == Abstract::BACTERIUM) {
-            int team = model_->getTeam(index.row(), index.column());
+            int team = model_->getTeamByCoordinates(
+                Abstract::Point(index.row(), index.column())
+            );
             uint hash = qHash(teams_[team]);
             QPainter painter(&image);
             painter.setBrush(QColor(QRgb(static_cast<int>(hash))));
