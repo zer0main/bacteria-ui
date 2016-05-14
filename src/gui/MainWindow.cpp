@@ -61,7 +61,7 @@ void MainWindow::setTableViewModels() {
 
 void MainWindow::initializeTeamsListModel(const QStringList& files) {
     for (int i = 0; i < files.size(); i++) {
-        teams_.append(QFileInfo(files[i]).baseName());
+        teams_.append(files[i]);
     }
     teams_list_model_ = new TeamsListModel(this, teams_);
 }

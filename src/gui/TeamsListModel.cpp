@@ -24,7 +24,8 @@ QVariant TeamsListModel::data(const Index& index, int role) const {
         uint hash = qHash(teams_[index.row()]);
         return QColor(QRgb(static_cast<int>(hash)));
     } else if (role == Qt::DisplayRole) {
-        return teams_[index.row()];
+        QString team_name = QFileInfo(teams_[index.row()]).baseName();
+        return team_name;
     }
     return QVariant();
 }
