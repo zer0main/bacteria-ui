@@ -68,11 +68,12 @@ void MainWindow::initializeTeamsListModel(const QStringList& files) {
 
 void MainWindow::initializeModels(int width, int height) {
     int teams = teams_.size();
-    model_ = ModelPtr
-             (Abstract::makeModel<Implementation::Model>(width,
-                                                         height,
-                                                         bacteria_,
-                                                         teams));
+    model_ = ModelPtr(Abstract::makeModel<Implementation::Model>(
+        width,
+        height,
+        bacteria_,
+        teams
+    ));
     board_model_ = new TableModel(this, model_, teams_);
 }
 
