@@ -47,6 +47,8 @@ private:
 
     int bacteria_;
 
+    int curr_team_;
+
     void createCoreObjects();
 
     void createBoardItemDelegate();
@@ -68,6 +70,10 @@ private:
     void configureSizeSpinBoxes();
 
 private slots:
+    void makeMove();
+
+    void update();
+
     void on_fileButton_clicked();
 
     void on_quitButton_clicked();

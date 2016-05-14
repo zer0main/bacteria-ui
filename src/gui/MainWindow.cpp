@@ -15,7 +15,8 @@
 
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow) {
+    ui(new Ui::MainWindow),
+    curr_team_(0) {
     ui->setupUi(this);
 }
 
@@ -109,6 +110,17 @@ void MainWindow::configureSizeSpinBoxes() {
     ui->boardHeight->setValue(default_height);
 }
 
+void MainWindow::makeMove() {
+    interpreter_->makeMove(*(changers_[curr_team_].data()), 0);
+    QTimer::singleShot(MOVE_WAIT, this, SLOT(update()));
+    curr_team_ = (curr_team_ + 1) % teams_.size();
+}
+
+void MainWindow::update() {
+    board_model_->updateData();
+    QTimer::singleShot(MOVE_WAIT, this, SLOT(makeMove()));
+}
+
 void MainWindow::on_fileButton_clicked() {
     QStringList file_names = QFileDialog::getOpenFileNames(
         this,
@@ -145,4 +157,5 @@ void MainWindow::on_playButton_clicked() {
     createBoardItemDelegate();
     setBoardViewDelegate();
     ui->stackedWidget->setCurrentWidget(ui->gamepage);
+    makeMove();
 }
