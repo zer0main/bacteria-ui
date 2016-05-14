@@ -5,6 +5,9 @@
  * See the LICENSE file for terms of use.
  */
 
+#include <string>
+#include <fstream>
+
 #include "MainWindow.hpp"
 #include "ui_MainWindow.h"
 
@@ -18,6 +21,29 @@ MainWindow::MainWindow(QWidget* parent) :
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::createCoreObjects() {
+    Strings script_strs;
+    for (int i = 0; i < teams_.size(); i++) {
+        std::ifstream script(teams_[i].toStdString().c_str());
+        std::string script_str;
+        int instructions = 0;
+        for (std::string buffer; getline(script, buffer); ) {
+            script_str += buffer + '\n';
+            instructions++;
+        }
+        ChangerPtr changer = ChangerPtr(
+            new Implementation::Changer(model_, i, 0, instructions)
+        );
+        changers_.push_back(changer);
+        script_strs.push_back(script_str);
+        script.close();
+    }
+    interpreter_ = InterpreterPtr(
+        new Implementation::Interpreter()
+    );
+    interpreter_->makeBytecode(script_strs);
 }
 
 void MainWindow::createBoardItemDelegate() {
@@ -112,6 +138,7 @@ void MainWindow::on_playButton_clicked() {
     int height = ui->boardHeight->value();
     initializeModels(width, height);
     setTableViewModels();
+    createCoreObjects();
     configureTeamsList();
     configureBoardView();
     createBoardItemDelegate();

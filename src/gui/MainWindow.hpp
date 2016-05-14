@@ -10,6 +10,7 @@
 
 #include <QtGui>
 
+#include "Interpreter.hpp"
 #include "CoreGlobals.hpp"
 
 #include "GuiGlobals.hpp"
@@ -36,11 +37,17 @@ private:
 
     BoardItemDelegate* board_item_delegate_;
 
+    InterpreterPtr interpreter_;
+
+    ChangerPtrs changers_;
+
     ModelPtr model_;
 
     QStringList teams_;
 
     int bacteria_;
+
+    void createCoreObjects();
 
     void createBoardItemDelegate();
 
