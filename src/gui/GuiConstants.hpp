@@ -9,6 +9,9 @@
 #ifndef GUI_CONSTANTS_HPP
 #define GUI_CONSTANTS_HPP
 
+/** Waiting time between moves (msec) */
+const int MOVE_WAIT = 500;
+
 /** Indent between minimum and default width/height */
 const int INDENT = 15;
 
