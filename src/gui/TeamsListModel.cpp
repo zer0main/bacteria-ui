@@ -7,12 +7,19 @@
 
 #include "TeamsListModel.hpp"
 
-TeamsListModel::TeamsListModel(QObject* parent, const QStringList& teams) :
-    QAbstractTableModel(parent), teams_(teams) {
+TeamsListModel::TeamsListModel(
+    QObject* parent,
+    ConstModelPtr model,
+    const QStringList* teams
+)
+    : QAbstractTableModel(parent)
+    , model_(model)
+    , teams_(teams)
+{
 }
 
 int TeamsListModel::rowCount(const Index& /*parent*/) const {
-    return teams_.size();
+    return teams_->size();
 }
 
 int TeamsListModel::columnCount(const Index& /*parent*/) const {
@@ -21,10 +28,10 @@ int TeamsListModel::columnCount(const Index& /*parent*/) const {
 
 QVariant TeamsListModel::data(const Index& index, int role) const {
     if (role == Qt::DecorationRole) {
-        uint hash = qHash(teams_[index.row()]);
+        uint hash = qHash((*teams_)[index.row()]);
         return QColor(QRgb(static_cast<int>(hash)));
     } else if (role == Qt::DisplayRole) {
-        QString team_name = QFileInfo(teams_[index.row()]).baseName();
+        QString team_name = QFileInfo((*teams_)[index.row()]).baseName();
         return team_name;
     }
     return QVariant();

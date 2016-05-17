@@ -60,13 +60,6 @@ void MainWindow::setTableViewModels() {
     ui->boardView->setModel(board_model_);
 }
 
-void MainWindow::initializeTeamsListModel(const QStringList& files) {
-    for (int i = 0; i < files.size(); i++) {
-        teams_.append(files[i]);
-    }
-    teams_list_model_ = new TeamsListModel(this, teams_);
-}
-
 void MainWindow::initializeModels(int width, int height) {
     int teams = teams_.size();
     model_ = ModelPtr(Abstract::makeModel<Implementation::Model>(
@@ -75,7 +68,8 @@ void MainWindow::initializeModels(int width, int height) {
         bacteria_,
         teams
     ));
-    board_model_ = new TableModel(this, model_, teams_);
+    board_model_ = new TableModel(this, model_, &teams_);
+    teams_list_model_ = new TeamsListModel(this, model_, &teams_);
 }
 
 void MainWindow::configureTeamsList() {
@@ -112,8 +106,8 @@ void MainWindow::configureSizeSpinBoxes() {
 
 void MainWindow::makeMove() {
     interpreter_->makeMove(*(changers_[curr_team_].data()), 0);
-    QTimer::singleShot(MOVE_WAIT, this, SLOT(update()));
     curr_team_ = (curr_team_ + 1) % teams_.size();
+    QTimer::singleShot(MOVE_WAIT, this, SLOT(update()));
 }
 
 void MainWindow::update() {
@@ -130,7 +124,9 @@ void MainWindow::on_fileButton_clicked() {
     );
     int teams = file_names.size();
     if ((teams >= 1) && (teams <= MAX_TEAMS)) {
-        initializeTeamsListModel(file_names);
+        for (int i = 0; i < teams; i++) {
+            teams_.append(file_names[i]);
+        }
         configureBacteriaSpinBox();
         ui->stackedWidget->setCurrentWidget(ui->bacteriaInputpage);
     }

@@ -10,25 +10,35 @@
 
 #include <QtGui>
 
+#include "CoreGlobals.hpp"
+
 typedef QModelIndex Index;
 
 /** Model for list of teams */
 class TeamsListModel : public QAbstractTableModel {
     Q_OBJECT
 public:
-    TeamsListModel(QObject* parent, const QStringList& teams);
+    TeamsListModel(
+        QObject* parent,
+        ConstModelPtr model,
+        const QStringList* teams
+    );
 
     int rowCount(const Index& parent = Index()) const;
 
     int columnCount(const Index& parent = Index()) const;
 
-    QVariant data(const Index& index, int role =
-                      Qt::DisplayRole) const;
+    QVariant data(
+        const Index& index,
+        int role = Qt::DisplayRole
+    ) const;
 
     void updateData();
 
 private:
-    QStringList teams_;
+    ConstModelPtr model_;
+
+    const QStringList* teams_;
 };
 
 #endif

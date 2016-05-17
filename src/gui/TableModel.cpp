@@ -10,7 +10,7 @@
 TableModel::TableModel(
     QObject* parent,
     ConstModelPtr model,
-    QStringList teams
+    const QStringList* teams
 )
     : QAbstractTableModel(parent)
     , model_(model)
@@ -37,7 +37,7 @@ QVariant TableModel::data(const Index& index, int role) const {
             int team = model_->getTeamByCoordinates(
                 Abstract::Point(index.row(), index.column())
             );
-            uint hash = qHash(teams_[team]);
+            uint hash = qHash((*teams_)[team]);
             QPainter painter(&image);
             painter.setBrush(QColor(QRgb(static_cast<int>(hash))));
             painter.drawEllipse(0, 0, 100, 100);

@@ -57,8 +57,6 @@ private:
 
     void setTableViewModels();
 
-    void initializeTeamsListModel(const QStringList& file_names);
-
     void initializeModels(int width, int height);
 
     void configureTeamsList();
