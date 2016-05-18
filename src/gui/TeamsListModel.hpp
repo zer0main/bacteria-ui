@@ -11,6 +11,7 @@
 #include <QtGui>
 
 #include "CoreGlobals.hpp"
+#include "Model.hpp"
 
 typedef QModelIndex Index;
 
@@ -39,6 +40,8 @@ private:
     ConstModelPtr model_;
 
     const QStringList* teams_;
+
+    QFont getDataFont(int team_number) const;
 };
 
 #endif

@@ -112,6 +112,7 @@ void MainWindow::makeMove() {
 
 void MainWindow::update() {
     board_model_->updateData();
+    teams_list_model_->updateData();
     QTimer::singleShot(MOVE_WAIT, this, SLOT(makeMove()));
 }
 

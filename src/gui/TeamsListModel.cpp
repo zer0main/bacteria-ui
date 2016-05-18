@@ -27,16 +27,29 @@ int TeamsListModel::columnCount(const Index& /*parent*/) const {
 }
 
 QVariant TeamsListModel::data(const Index& index, int role) const {
+    int team_number = index.row();
+    QString team = (*teams_)[team_number];
     if (role == Qt::DecorationRole) {
-        uint hash = qHash((*teams_)[index.row()]);
+        uint hash = qHash(team);
         return QColor(QRgb(static_cast<int>(hash)));
     } else if (role == Qt::DisplayRole) {
-        QString team_name = QFileInfo((*teams_)[index.row()]).baseName();
+        QString team_name = QFileInfo(team).baseName();
         return team_name;
+    } else if (role == Qt::FontRole) {
+        return getDataFont(team_number);
     }
     return QVariant();
 }
 
 void TeamsListModel::updateData() {
     reset();
+}
+
+QFont TeamsListModel::getDataFont(int team_number) const {
+    QFont font;
+    bool defeated = (model_->getBacteriaNumber(team_number) <= 0);
+    if (defeated) {
+        font.setStrikeOut(true);
+    }
+    return font;
 }
