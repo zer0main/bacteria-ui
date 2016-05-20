@@ -9,6 +9,9 @@
 #ifndef GUI_CONSTANTS_HPP
 #define GUI_CONSTANTS_HPP
 
+/** Color of center of bacterium; use to calculate team color */
+const int DEFAULT_COLOR = 0xFFBA59;
+
 /** Waiting time between moves (msec) */
 const int MOVE_WAIT = 500;
 
