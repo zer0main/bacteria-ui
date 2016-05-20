@@ -13,6 +13,8 @@
 #include "CoreGlobals.hpp"
 #include "Model.hpp"
 
+#include "GuiGlobals.hpp"
+
 typedef QModelIndex Index;
 
 /** Model for list of teams */

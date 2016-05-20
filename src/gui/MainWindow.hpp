@@ -13,6 +13,7 @@
 #include "Interpreter.hpp"
 #include "CoreGlobals.hpp"
 
+#include "GuiConstants.hpp"
 #include "GuiGlobals.hpp"
 #include "BoardItemDelegate.hpp"
 #include "TeamsListModel.hpp"
