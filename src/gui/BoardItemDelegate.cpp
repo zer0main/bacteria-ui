@@ -14,7 +14,7 @@ BoardItemDelegate::BoardItemDelegate(QTableView* view) :
 void BoardItemDelegate::paint(
     QPainter* painter,
     const QStyleOptionViewItem& option,
-    const QModelIndex& index
+    const Index& index
 ) const {
     QVariant vr = index.data(Qt::DecorationRole);
     QImage base_image = vr.value<QImage>();

@@ -13,5 +13,6 @@
 class BoardItemDelegate;
 
 typedef QSharedPointer<BoardItemDelegate> BoardItemDelegatePtr;
+typedef QModelIndex Index;
 
 #endif

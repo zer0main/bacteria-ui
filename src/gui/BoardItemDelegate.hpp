@@ -10,6 +10,8 @@
 
 #include <QtGui>
 
+#include "GuiGlobals.hpp"
+
 class BoardItemDelegate : public QStyledItemDelegate {
     Q_OBJECT
 public:
@@ -18,7 +20,7 @@ public:
     void paint(
         QPainter* painter,
         const QStyleOptionViewItem& option,
-        const QModelIndex& index
+        const Index& index
     ) const;
 
 private:

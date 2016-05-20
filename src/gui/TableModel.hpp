@@ -15,8 +15,6 @@
 
 #include "GuiGlobals.hpp"
 
-typedef QModelIndex Index;
-
 /** Model for boardView */
 class TableModel : public QAbstractTableModel {
     Q_OBJECT
