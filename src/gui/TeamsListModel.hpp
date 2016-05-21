@@ -41,6 +41,8 @@ private:
 
     const QStringList* teams_;
 
+    QColor getForeground(int team_number) const;
+
     QFont getDataFont(int team_number) const;
 };
 
