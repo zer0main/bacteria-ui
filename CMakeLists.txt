@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 2.6)
 project(bacteria-ui)
 
+IF (CMP0017)
+    cmake_policy(SET CMP0017 NEW)
+ENDIF(CMP0017)
+
 FIND_PACKAGE(Qt4 REQUIRED)
 INCLUDE(${QT_USE_FILE})
 
@@ -22,3 +26,7 @@ QT4_ADD_RESOURCES(RCSrcs "src/gui/qbacteria.qrc")
 
 add_executable(bacteria-ui ${sources} ${MOCrcs} ${UISrcs} ${RCSrcs})
 TARGET_LINK_LIBRARIES(bacteria-ui ${QT_LIBRARIES})
+
+IF (MINGW)
+    SET(CMAKE_EXE_LINKER_FLAGS -mwindows)
+ENDIF (MINGW)

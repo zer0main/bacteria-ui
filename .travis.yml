@@ -1,14 +1,30 @@
 language: c
 
-install:
-  - sudo apt-get update
-  - sudo apt-get install g++ cmake make libqt4-dev
+env:
+  matrix:
+    - PACKAGES='g++ cmake make libqt4-dev' CMAKE=cmake DEPLOY_FILE='bacteria-linux64.exe'
+    - PACKAGES='mxe-i686-w64-mingw32.static-qt' CMAKE='/usr/lib/mxe/usr/bin/i686-w64-mingw32.static-cmake' DEPLOY_FILE='bacteria-windows32.exe'
+    - PACKAGES='mxe-x86-64-w64-mingw32.static-qt' CMAKE='/usr/lib/mxe/usr/bin/x86_64-w64-mingw32.static-cmake' DEPLOY_FILE='bacteria-windows64.exe'
 
-before_script:
+install:
+  - echo "deb http://pkg.mxe.cc/repos/apt/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mxeapt.list
+  - sudo apt-key adv --keyserver x-hkp://keys.gnupg.net --recv-keys D43A795B73B16ABE9643FE1AFD8FFF16DB45C6AB
+  - sudo apt-get update
+  - sudo apt-get install upx-ucl $PACKAGES
   - git submodule update --init
 
 script:
-  - mkdir build-dir
-  - cd build-dir
-  - cmake ..
-  - make
+  - $CMAKE . -Bbuild-dir
+  - cmake --build build-dir --config Release
+
+before_deploy:
+  - cp build-dir/bacteria* $DEPLOY_FILE
+  - upx -9 $DEPLOY_FILE
+
+deploy:
+  provider: releases
+  api_key: "$GH_API_KEY"
+  file: "$DEPLOY_FILE"
+  skip_cleanup: true
+  on:
+    tags: true
