@@ -16,7 +16,12 @@ include_directories(src/gui)
 include_directories(src)
 include_directories("${CMAKE_CURRENT_BINARY_DIR}")
 
-file(GLOB sources "src/gui/*.cpp" "bacteria-core/src/*/*.cpp")
+file(GLOB sources
+    "src/gui/*.cpp"
+    "bacteria-core/src/util/*.cpp"
+    "bacteria-core/src/model/*.cpp"
+    "bacteria-core/src/interpreter/*.cpp"
+)
 file(GLOB uis "src/gui/*.ui")
 file(GLOB qheaders "src/gui/*.hpp")
 
