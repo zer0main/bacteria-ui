@@ -11,7 +11,6 @@
 #include <QtGui>
 
 #include "CoreGlobals.hpp"
-#include "Model.hpp"
 
 #include "GuiGlobals.hpp"
 
@@ -21,7 +20,7 @@ class TeamsListModel : public QAbstractTableModel {
 public:
     TeamsListModel(
         QObject* parent,
-        ConstModelPtr model,
+        const Ints& bacteria_numbers,
         const QStringList* teams
     );
 
@@ -37,9 +36,9 @@ public:
     void updateData();
 
 private:
-    ConstModelPtr model_;
-
     const QStringList* teams_;
+
+    Ints bacteria_numbers_;
 
     QColor getForeground(int team_number) const;
 

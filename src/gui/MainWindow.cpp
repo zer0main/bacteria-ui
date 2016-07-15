@@ -66,8 +66,13 @@ void MainWindow::initializeModels(int width, int height) {
         bacteria_,
         teams
     ));
+    Ints bacteria_numbers(teams, bacteria_);
     board_model_ = new TableModel(this, model_, &teams_);
-    teams_list_model_ = new TeamsListModel(this, model_, &teams_);
+    teams_list_model_ = new TeamsListModel(
+        this,
+        bacteria_numbers,
+        &teams_
+    );
 }
 
 void MainWindow::configureTeamsList() {

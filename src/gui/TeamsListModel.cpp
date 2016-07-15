@@ -9,11 +9,11 @@
 
 TeamsListModel::TeamsListModel(
     QObject* parent,
-    ConstModelPtr model,
+    const Ints& bacteria_numbers,
     const QStringList* teams
 )
     : QAbstractTableModel(parent)
-    , model_(model)
+    , bacteria_numbers_(bacteria_numbers)
     , teams_(teams)
 {
 }
@@ -48,13 +48,13 @@ void TeamsListModel::updateData() {
 }
 
 QColor TeamsListModel::getForeground(int team_number) const {
-    bool defeated = (model_->getBacteriaNumber(team_number) <= 0);
+    bool defeated = (bacteria_numbers_[team_number] <= 0);
     return ((defeated) ? Qt::red : Qt::black);
 }
 
 QFont TeamsListModel::getDataFont(int team_number) const {
     QFont font;
-    bool defeated = (model_->getBacteriaNumber(team_number) <= 0);
+    bool defeated = (bacteria_numbers_[team_number] <= 0);
     if (defeated) {
         font.setStrikeOut(true);
     }
