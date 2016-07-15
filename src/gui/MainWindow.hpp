@@ -68,6 +68,8 @@ private:
 
     void configureSizeSpinBoxes();
 
+    Ints updateBacteriaNumbers();
+
 private slots:
     void makeMove();
 

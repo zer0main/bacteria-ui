@@ -102,6 +102,15 @@ void MainWindow::configureSizeSpinBoxes() {
     ui->boardHeight->setValue(default_height);
 }
 
+Ints MainWindow::updateBacteriaNumbers() {
+    Ints bacteria_numbers;
+    for (int i = 0; i < changers_.size(); i++) {
+        changers_[i]->clearBeforeMove();
+        bacteria_numbers.push_back(changers_[i]->getBacteriaNumber());
+    }
+    return bacteria_numbers;
+}
+
 void MainWindow::makeMove() {
     interpreter_->makeMove(*(changers_[curr_team_].data()), 0);
     curr_team_ = (curr_team_ + 1) % teams_.size();
