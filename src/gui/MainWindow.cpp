@@ -123,8 +123,9 @@ void MainWindow::makeMove() {
 }
 
 void MainWindow::update() {
+    Ints bacteria_numbers = updateBacteriaNumbers();
     board_model_->updateData();
-    teams_list_model_->updateData();
+    teams_list_model_->updateData(bacteria_numbers);
     QTimer::singleShot(MOVE_WAIT, this, SLOT(makeMove()));
 }
 

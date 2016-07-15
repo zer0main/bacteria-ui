@@ -43,7 +43,8 @@ QVariant TeamsListModel::data(const Index& index, int role) const {
     return QVariant();
 }
 
-void TeamsListModel::updateData() {
+void TeamsListModel::updateData(const Ints& bacteria_numbers) {
+    bacteria_numbers_ = bacteria_numbers;
     reset();
 }
 

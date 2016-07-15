@@ -33,7 +33,7 @@ public:
         int role = Qt::DisplayRole
     ) const;
 
-    void updateData();
+    void updateData(const Ints& bacteria_numbers);
 
 private:
     const QStringList* teams_;
