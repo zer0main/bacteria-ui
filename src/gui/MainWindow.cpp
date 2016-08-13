@@ -45,12 +45,7 @@ void MainWindow::setTableViewModels() {
 
 void MainWindow::initializeModels(int width, int height) {
     int teams = teams_.size();
-    model_ = ModelPtr(Abstract::makeModel<Implementation::Model>(
-        width,
-        height,
-        bacteria_,
-        teams
-    ));
+    model_ = Creator::createModel(width, height, bacteria_, teams);
     Ints bacteria_numbers(teams, bacteria_);
     board_model_ = new TableModel(this, model_, &teams_);
     teams_list_model_ = new TeamsListModel(
