@@ -10,6 +10,7 @@
 
 #include <QtGui>
 
+#include "Creator.hpp"
 #include "Interpreter.hpp"
 #include "CoreGlobals.hpp"
 

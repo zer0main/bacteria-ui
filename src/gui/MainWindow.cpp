@@ -23,26 +23,11 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::createCoreObjects() {
-    Strings script_strs;
-    for (int i = 0; i < teams_.size(); i++) {
-        std::ifstream script(teams_[i].toStdString().c_str());
-        std::string script_str;
-        int instructions = 0;
-        for (std::string buffer; getline(script, buffer); ) {
-            script_str += buffer + '\n';
-            instructions++;
-        }
-        ChangerPtr changer = ChangerPtr(
-            new Implementation::Changer(model_, i, 0, instructions)
-        );
-        changers_.push_back(changer);
-        script_strs.push_back(script_str);
-        script.close();
-    }
-    interpreter_ = InterpreterPtr(
-        new Implementation::Interpreter()
+    interpreter_ = Creator::createCoreObjects(
+        model_,
+        teams_,
+        changers_
     );
-    interpreter_->makeBytecode(script_strs);
 }
 
 void MainWindow::createBoardItemDelegate() {
