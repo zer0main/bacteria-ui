@@ -18,6 +18,7 @@ include_directories("${CMAKE_CURRENT_BINARY_DIR}")
 
 file(GLOB sources
     "src/gui/*.cpp"
+    "bacteria-core/src/*.cpp"
     "bacteria-core/src/util/*.cpp"
     "bacteria-core/src/model/*.cpp"
     "bacteria-core/src/interpreter/*.cpp"
